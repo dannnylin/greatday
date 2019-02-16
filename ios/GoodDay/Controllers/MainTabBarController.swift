@@ -11,7 +11,7 @@ import Foundation
 
 class MainTabBarController: UITabBarController {
     var homeViewController: UIViewController!
-    var statsViewController: UIViewController!
+    var statsViewController: StatsViewController!
     var moodViewController: MoodViewController!
     var settingsViewController: UIViewController!
     var calendarViewController: CalendarViewController!
@@ -32,7 +32,7 @@ class MainTabBarController: UITabBarController {
         homeViewController.view.backgroundColor = UIColor.white
         homeViewController.navigationItem.title = "HOME"
         
-        statsViewController = UIViewController()
+        statsViewController = StatsViewController.create()
         statsViewController.view.backgroundColor = UIColor.white
         statsViewController.tabBarItem.image = UIImage(named: "stats-icon")
         statsViewController.navigationItem.title = "STATS"
@@ -64,7 +64,7 @@ class MainTabBarController: UITabBarController {
         
         statsNavigationController.tabBarItem.title = "STATS"
         
-        moodNavigationController.tabBarItem.title = "+"
+        moodNavigationController.tabBarItem.title = "ADD"
         
         calendarNavigationController.tabBarItem.title = "CALENDAR"
         
