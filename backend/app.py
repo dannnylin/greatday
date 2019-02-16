@@ -6,6 +6,7 @@ from bson.json_util import dumps, loads
 import datetime
 import os
 import json
+from collections import OrderedDict
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://admin:password123@ds147942.mlab.com:47942/greatday"
@@ -35,12 +36,26 @@ def addActivity():
       {"date": data["date"]}, {"$set": {"activities": activities}})
   return "hello world"
 
-@app.route('/api/getActivities')
-def getActivities():
+@app.route('/api/getStats')
+def getStats():
+  returnResults = {}
+  activities = activities_db.find({})
+  rankings = {}
+  for activity in activities:
+    if activity["mood"] == "happy":
+      rankings[activity["name"]] = rankings.get(activity["name"], 0) + 1
+  rankedData = OrderedDict(
+      sorted(rankings.items(), key=lambda x: x[1], reverse=True))
+  returnResults["happy"] = rankedData
+  rankings = {}
   activities = activities_db.find({})
   for activity in activities:
-    print(activity)
-  return "works!"
+    if activity["mood"] == "sad":
+      rankings[activity["name"]] = rankings.get(activity["name"], 0) + 1
+  rankedData = OrderedDict(
+      sorted(rankings.items(), key=lambda x: x[1], reverse=True))
+  returnResults["sad"] = rankedData
+  return json.dumps(returnResults)
 
 @app.route('/api/getDateInfo', methods=["POST"])
 def getDateInfo():

@@ -11,7 +11,7 @@ import UIKit
 
 class StatsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var dataSource : [(name: String, count: Int)] = [(String, Int)]() {
+    var dataSource: [[(name: String, count: Int)]] = [[(String, Int)]]() {
         didSet {
             self.tableView.reloadData()
         }
@@ -23,14 +23,30 @@ class StatsViewController: UIViewController {
         tableView.register(HappiestActivitiesCell.self, forCellReuseIdentifier: "happiestCell")
         
         DataService.instance.getStats { (data) in
-            if let resultsDict = data.dictionaryObject as? [String: Int] {
-                var sortedDict = resultsDict.sorted{ $0.1 > $1.1 }
+            let happyActivities = data.dictionaryObject?["happy"] as? [String: Int]
+            let sadActivities = data.dictionaryObject?["sad"] as? [String: Int]
+            if let happyDict = happyActivities {
+                self.dataSource.append([])
+                let sortedDict = happyDict.sorted{ $0.1 > $1.1 }
                 var currentCount = 0
                 for (activity, count) in sortedDict {
                     if (currentCount >= 5) {
                         break
                     }
-                    self.dataSource.append((activity, count))
+                    self.dataSource[0].append((activity, count))
+                    currentCount += 1
+                }
+            }
+            
+            if let sadDict = sadActivities {
+                self.dataSource.append([])
+                let sortedDict = sadDict.sorted{ $0.1 > $1.1 }
+                var currentCount = 0
+                for (activity, count) in sortedDict {
+                    if (currentCount >= 5) {
+                        break
+                    }
+                    self.dataSource[1].append((activity, count))
                     currentCount += 1
                 }
             }
@@ -49,24 +65,28 @@ class StatsViewController: UIViewController {
 
 extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "happiestCell") as? HappiestActivitiesCell else {
             return UITableViewCell()
         }
-        let cellData = dataSource[indexPath.row]
+        let cellData = dataSource[indexPath.section][indexPath.row]
         cell.selectionStyle = .none
         cell.activityNameLabel.text = "\(cellData.name) - \(cellData.count)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Happiest Activities"
+        if (section == 0) {
+            return "Happiest Activities"
+        } else {
+            return "Saddest Activities"
+        }
     }
 }
