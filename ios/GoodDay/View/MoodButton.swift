@@ -8,10 +8,14 @@
 
 import UIKit
 
-enum Mood {
-    case sad
-    case meh
-    case happy
+enum Mood : String {
+    case sad = "sad"
+    case meh = "meh"
+    case happy = "happy"
+    
+    var description: String {
+        return self.rawValue
+    }
 }
 
 class MoodButton: UIButton {
@@ -25,7 +29,7 @@ class MoodButton: UIButton {
     
     @objc func buttonClicked() {
         if let mood = mood {
-            print(mood)
+            DataService.instance.addMoodToDate(mood: mood)
         }
     }
 }

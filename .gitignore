@@ -4,6 +4,7 @@
 
 build/
 
+goodday.pem
 *.pbxuser
 *.perspective
 *.perspectivev3

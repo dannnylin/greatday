@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'GoodDay' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GoodDay
+  pod 'Alamofire'
+
+  target 'GoodDayTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'GoodDayUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

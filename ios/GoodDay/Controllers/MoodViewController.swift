@@ -11,6 +11,7 @@ import UIKit
 class MoodViewController: UIViewController {
     
     @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var otherDayButton: UIButton!
     @IBOutlet weak var sadButton: MoodButton!
     @IBOutlet weak var mehButton: MoodButton!
     @IBOutlet weak var happyButton: MoodButton!
@@ -35,6 +36,11 @@ class MoodViewController: UIViewController {
     
     @IBAction func skipPressed(sender: UIButton) {
         let mainNavController = MainTabBarController.create()
+        UIApplication.shared.keyWindow?.rootViewController = mainNavController
+    }
+    
+    @IBAction func otherDayPressed(sender: UIButton) {
+        let mainNavController = PreviousMoodViewController.create()
         UIApplication.shared.keyWindow?.rootViewController = mainNavController
     }
 }

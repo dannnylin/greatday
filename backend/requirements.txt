@@ -1,0 +1,3 @@
+flask
+bson
+flask_pymongo

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3068D4342217A1FF0087D693 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068D4332217A1FF0087D693 /* MainTabBarController.swift */; };
 		3068D4372217BDC30087D693 /* MoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068D4362217BDC30087D693 /* MoodButton.swift */; };
+		3068D43B2217C0910087D693 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068D43A2217C0910087D693 /* DataService.swift */; };
+		3068D43D2217C3940087D693 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068D43C2217C3940087D693 /* Constants.swift */; };
+		3068D43F2217DB3D0087D693 /* PreviousMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068D43E2217DB3D0087D693 /* PreviousMoodViewController.swift */; };
 		30BD63D82213FBDD00ADDC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD63D72213FBDD00ADDC22 /* AppDelegate.swift */; };
 		30BD63DF2213FBDE00ADDC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BD63DE2213FBDE00ADDC22 /* Assets.xcassets */; };
 		30BD63E22213FBDE00ADDC22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BD63E02213FBDE00ADDC22 /* LaunchScreen.storyboard */; };
@@ -16,6 +19,9 @@
 		30BD63F82213FBDE00ADDC22 /* GoodDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD63F72213FBDE00ADDC22 /* GoodDayUITests.swift */; };
 		30BD64072213FC5D00ADDC22 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD64062213FC5D00ADDC22 /* MoodViewController.swift */; };
 		30BD64092213FCB200ADDC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BD64082213FCB200ADDC22 /* Main.storyboard */; };
+		540A0AF3507DC828D1744D8E /* Pods_GoodDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923040AC7CF8C512DCF6797D /* Pods_GoodDayTests.framework */; };
+		999FF910134C67B5C54B9F97 /* Pods_GoodDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F34597F577094AFCC8D98ECB /* Pods_GoodDay.framework */; };
+		A13AE96FC08555002ECB4941 /* Pods_GoodDayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29CFFA8F3B2229A23C24D5A3 /* Pods-GoodDayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayUITests.release.xcconfig"; path = "Target Support Files/Pods-GoodDayUITests/Pods-GoodDayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3068D4332217A1FF0087D693 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3068D4362217BDC30087D693 /* MoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodButton.swift; sourceTree = "<group>"; };
+		3068D43A2217C0910087D693 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		3068D43C2217C3940087D693 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3068D43E2217DB3D0087D693 /* PreviousMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousMoodViewController.swift; sourceTree = "<group>"; };
 		30BD63D42213FBDD00ADDC22 /* GoodDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BD63D72213FBDD00ADDC22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BD63DE2213FBDE00ADDC22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +61,14 @@
 		30BD63F92213FBDE00ADDC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BD64062213FC5D00ADDC22 /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
 		30BD64082213FCB200ADDC22 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodDayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FE3FBC1693A4227A34487 /* Pods-GoodDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDay.release.xcconfig"; path = "Target Support Files/Pods-GoodDay/Pods-GoodDay.release.xcconfig"; sourceTree = "<group>"; };
+		7D2D29D9E47541C431B19670 /* Pods-GoodDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodDayTests/Pods-GoodDayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		923040AC7CF8C512DCF6797D /* Pods_GoodDayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodDayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99B9DE501E6D6A580EAF4297 /* Pods-GoodDayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayTests.release.xcconfig"; path = "Target Support Files/Pods-GoodDayTests/Pods-GoodDayTests.release.xcconfig"; sourceTree = "<group>"; };
+		A69F9A025D3E8C1B48BE7700 /* Pods-GoodDayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoodDayUITests/Pods-GoodDayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DBA6678DCB249A5288CF3F0E /* Pods-GoodDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDay.debug.xcconfig"; path = "Target Support Files/Pods-GoodDay/Pods-GoodDay.debug.xcconfig"; sourceTree = "<group>"; };
+		F34597F577094AFCC8D98ECB /* Pods_GoodDay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodDay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				999FF910134C67B5C54B9F97 /* Pods_GoodDay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540A0AF3507DC828D1744D8E /* Pods_GoodDayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,18 +92,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13AE96FC08555002ECB4941 /* Pods_GoodDayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02CF6CBA7ACFDF0D590F6734 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F34597F577094AFCC8D98ECB /* Pods_GoodDay.framework */,
+				923040AC7CF8C512DCF6797D /* Pods_GoodDayTests.framework */,
+				5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3068D4352217BD9B0087D693 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3068D4362217BDC30087D693 /* MoodButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3068D4382217C0830087D693 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3068D4392217C0870087D693 /* Networking */,
+				3068D43C2217C3940087D693 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3068D4392217C0870087D693 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3068D43A2217C0910087D693 /* DataService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		30BD63CB2213FBDC00ADDC22 = {
@@ -93,6 +141,8 @@
 				30BD63EB2213FBDE00ADDC22 /* GoodDayTests */,
 				30BD63F62213FBDE00ADDC22 /* GoodDayUITests */,
 				30BD63D52213FBDD00ADDC22 /* Products */,
+				B1928DAA976ABC86B4109043 /* Pods */,
+				02CF6CBA7ACFDF0D590F6734 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +159,7 @@
 		30BD63D62213FBDD00ADDC22 /* GoodDay */ = {
 			isa = PBXGroup;
 			children = (
+				3068D4382217C0830087D693 /* Helpers */,
 				3068D4352217BD9B0087D693 /* View */,
 				30BD64052213FC4600ADDC22 /* Controllers */,
 				30BD63D72213FBDD00ADDC22 /* AppDelegate.swift */,
@@ -143,8 +194,22 @@
 			children = (
 				30BD64062213FC5D00ADDC22 /* MoodViewController.swift */,
 				3068D4332217A1FF0087D693 /* MainTabBarController.swift */,
+				3068D43E2217DB3D0087D693 /* PreviousMoodViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B1928DAA976ABC86B4109043 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DBA6678DCB249A5288CF3F0E /* Pods-GoodDay.debug.xcconfig */,
+				542FE3FBC1693A4227A34487 /* Pods-GoodDay.release.xcconfig */,
+				7D2D29D9E47541C431B19670 /* Pods-GoodDayTests.debug.xcconfig */,
+				99B9DE501E6D6A580EAF4297 /* Pods-GoodDayTests.release.xcconfig */,
+				A69F9A025D3E8C1B48BE7700 /* Pods-GoodDayUITests.debug.xcconfig */,
+				29CFFA8F3B2229A23C24D5A3 /* Pods-GoodDayUITests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BD63FC2213FBDE00ADDC22 /* Build configuration list for PBXNativeTarget "GoodDay" */;
 			buildPhases = (
+				A0AE050739F25DD790B9F728 /* [CP] Check Pods Manifest.lock */,
 				30BD63D02213FBDD00ADDC22 /* Sources */,
 				30BD63D12213FBDD00ADDC22 /* Frameworks */,
 				30BD63D22213FBDD00ADDC22 /* Resources */,
+				C18C50BA9C96A56A63E21F77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,6 +238,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BD63FF2213FBDE00ADDC22 /* Build configuration list for PBXNativeTarget "GoodDayTests" */;
 			buildPhases = (
+				9CD5E1B697BDD82F9BF4FD05 /* [CP] Check Pods Manifest.lock */,
 				30BD63E42213FBDE00ADDC22 /* Sources */,
 				30BD63E52213FBDE00ADDC22 /* Frameworks */,
 				30BD63E62213FBDE00ADDC22 /* Resources */,
@@ -189,6 +257,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BD64022213FBDE00ADDC22 /* Build configuration list for PBXNativeTarget "GoodDayUITests" */;
 			buildPhases = (
+				2607F5A292DED9E59557280A /* [CP] Check Pods Manifest.lock */,
 				30BD63EF2213FBDE00ADDC22 /* Sources */,
 				30BD63F02213FBDE00ADDC22 /* Frameworks */,
 				30BD63F12213FBDE00ADDC22 /* Resources */,
@@ -273,6 +342,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2607F5A292DED9E59557280A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodDayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CD5E1B697BDD82F9BF4FD05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodDayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0AE050739F25DD790B9F728 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodDay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C18C50BA9C96A56A63E21F77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodDay/Pods-GoodDay-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodDay/Pods-GoodDay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		30BD63D02213FBDD00ADDC22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -281,7 +441,10 @@
 				30BD63D82213FBDD00ADDC22 /* AppDelegate.swift in Sources */,
 				30BD64072213FC5D00ADDC22 /* MoodViewController.swift in Sources */,
 				3068D4372217BDC30087D693 /* MoodButton.swift in Sources */,
+				3068D43F2217DB3D0087D693 /* PreviousMoodViewController.swift in Sources */,
 				3068D4342217A1FF0087D693 /* MainTabBarController.swift in Sources */,
+				3068D43B2217C0910087D693 /* DataService.swift in Sources */,
+				3068D43D2217C3940087D693 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +609,7 @@
 		};
 		30BD63FD2213FBDE00ADDC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBA6678DCB249A5288CF3F0E /* Pods-GoodDay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -465,6 +629,7 @@
 		};
 		30BD63FE2213FBDE00ADDC22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 542FE3FBC1693A4227A34487 /* Pods-GoodDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -484,6 +649,7 @@
 		};
 		30BD64002213FBDE00ADDC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D2D29D9E47541C431B19670 /* Pods-GoodDayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -505,6 +671,7 @@
 		};
 		30BD64012213FBDE00ADDC22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99B9DE501E6D6A580EAF4297 /* Pods-GoodDayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -526,6 +693,7 @@
 		};
 		30BD64032213FBDE00ADDC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A69F9A025D3E8C1B48BE7700 /* Pods-GoodDayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +714,7 @@
 		};
 		30BD64042213FBDE00ADDC22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29CFFA8F3B2229A23C24D5A3 /* Pods-GoodDayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -18,6 +18,10 @@ dates_db = mongo.db.dates
 def index():
   return "hello world"
 
+@app.route('/api/test', methods=['GET'])
+def test():
+  return "test123"
+
 @app.route('/api/addActivity')
 def addActivity():
   # data = json.loads(request.data)
@@ -55,7 +59,20 @@ def addActivityToDate():
       {"date": date_str}, {"$set": {"activities": activities}})
   return "abc"
 
+@app.route('/api/addMoodToDate', methods=['GET', 'POST'])
+def addMoodToDate():
+  content = request.json
+  date = content["date"]
+  mood = content["mood"]
+  result = dates_db.find_one({"date": date})
+  print(result)
+  if result:
+    dates_db.find_one_and_update(
+        {"date": date}, {"$set": {"mood": mood}})
+  else:
+    dates_db.insert_one({"date": date, "mood": mood, "activities": {"morning": [], "afternoon": [], "evening": []}})
+  
+  return "hello"
+
 if __name__ == "__main__":
-    app.run(
-        host=os.getenv('LISTEN', '0.0.0.0'),
-        port=int(os.getenv('PORT', '80')))
+    app.run(host="0.0.0.0", port=80)
