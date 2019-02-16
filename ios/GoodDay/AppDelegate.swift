@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let mainController = MainViewController.create()
+        let mainController = MoodViewController.create()
         window?.rootViewController = mainController
         return true
     }

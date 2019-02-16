@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Mood View Controller-->
         <scene sceneID="k9T-WJ-r8c">
             <objects>
-                <viewController storyboardIdentifier="mainViewController" id="7lH-7Z-BJZ" customClass="MainViewController" customModule="GoodDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="moodViewController" id="7lH-7Z-BJZ" customClass="MoodViewController" customModule="GoodDay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FGm-1s-IxZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-Mt-Abt">
                                         <rect key="frame" x="137.5" y="0.0" width="100" height="150"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eE-i6-eYz">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eE-i6-eYz" customClass="MoodButton" customModule="GoodDay" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="41" width="50" height="68"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2eE-i6-eYz" secondAttribute="height" multiplier="442:598" id="1AD-uH-m2D"/>
@@ -56,7 +56,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7b-j6-o7t">
                                         <rect key="frame" x="237.5" y="0.0" width="100" height="150"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-To-qLr">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-To-qLr" customClass="MoodButton" customModule="GoodDay" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="41" width="50" height="68"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Zja-To-qLr" secondAttribute="height" multiplier="442:598" id="9Dn-Pf-CAy"/>
@@ -83,7 +83,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0k-Ou-qfk">
                                         <rect key="frame" x="37.5" y="0.0" width="100" height="150"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5u-dD-Wo7">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5u-dD-Wo7" customClass="MoodButton" customModule="GoodDay" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="41" width="50" height="68"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Rtd-3r-wu6"/>
@@ -131,6 +131,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="skip"/>
+                                <connections>
+                                    <action selector="skipPressedWithSender:" destination="7lH-7Z-BJZ" eventType="touchUpInside" id="AqL-ZO-dtJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,10 +149,30 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I33-kW-9P4"/>
                     </view>
+                    <connections>
+                        <outlet property="happyButton" destination="Zja-To-qLr" id="cDf-6f-05B"/>
+                        <outlet property="mehButton" destination="2eE-i6-eYz" id="wde-3Y-5y9"/>
+                        <outlet property="sadButton" destination="L5u-dD-Wo7" id="KZv-MT-XZQ"/>
+                        <outlet property="skipButton" destination="yBH-jz-FfG" id="sFW-Dc-pbG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3tK-UZ-Cia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-96.799999999999997" y="-43.628185907046479"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="LVq-Tb-3Jf">
+            <objects>
+                <tabBarController storyboardIdentifier="mainTabBarController" id="edB-Fd-SO6" customClass="MainTabBarController" customModule="GoodDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AG4-l0-MAs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkk-td-Or0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="-44"/>
         </scene>
     </scenes>
     <resources>
