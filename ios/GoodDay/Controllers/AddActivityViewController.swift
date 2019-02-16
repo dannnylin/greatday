@@ -16,8 +16,8 @@ class AddActivityViewController: UIViewController {
     @IBOutlet weak var timeOfDaySegmentedControl: UISegmentedControl!
     var parentController: ActivitiesViewController!
     var date: String!
-    var mood: Mood!
-    var timeOfDay: String!
+    var mood: Mood = Mood.sad
+    var timeOfDay: String = "morning"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,12 @@ class AddActivityViewController: UIViewController {
             "timeOfDay": timeOfDay
         ]
         DataService.instance.addActivity(data: data)
-        parentController.dataSource.append(data)
+        let newActivity = Activity()
+        newActivity.name = activityTextField.text!
+        newActivity.mood = Mood(rawValue: mood.description)
+        newActivity.date = date
+        newActivity.timeOfDay = timeOfDay
+        parentController.dataSource.append(newActivity)
         self.dismiss(animated: true, completion: nil)
     }
     

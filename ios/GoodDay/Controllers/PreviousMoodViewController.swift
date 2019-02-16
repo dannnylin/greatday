@@ -19,7 +19,7 @@ class PreviousMoodViewController: MoodViewController {
         showDatePicker()
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var dateTime = Date()
+        let dateTime = Date()
         let dateString = dateFormatter.string(from: dateTime)
         datePickerTextView.text = dateString
     }

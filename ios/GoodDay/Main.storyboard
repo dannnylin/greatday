@@ -199,6 +199,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-yy-bCD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zUJ-KS-kb7" id="LKo-8N-CA0"/>
+                                    <outlet property="delegate" destination="zUJ-KS-kb7" id="oNx-MF-Q6Q"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Z9-lw-ybv">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -207,7 +211,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="VqG-oS-QN6">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Jhm-rB-Uyx">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="Jhm-rB-Uyx">
                                             <connections>
                                                 <action selector="cancelPressedWithSender:" destination="zUJ-KS-kb7" id="q9u-R3-pnl"/>
                                             </connections>

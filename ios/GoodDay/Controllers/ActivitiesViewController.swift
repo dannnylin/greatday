@@ -12,7 +12,7 @@ class ActivitiesViewController: UIViewController {
     var date: String!
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: [[String: Any]] = [] {
+    var dataSource: [Activity] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -20,6 +20,7 @@ class ActivitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
@@ -27,7 +28,7 @@ class ActivitiesViewController: UIViewController {
     }
     
     @IBAction func addPressed(sender: UIBarButtonItem) {
-        var addActivityViewController = AddActivityViewController.create(date: date)
+        let addActivityViewController = AddActivityViewController.create(date: date)
         addActivityViewController.parentController = self
         self.present(addActivityViewController, animated: true, completion: nil)
     }
@@ -49,7 +50,12 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ActivityViewCell else {
+            return UITableViewCell()
+        }
+        let cellData = dataSource[indexPath.row]
+        cell.activity = cellData
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

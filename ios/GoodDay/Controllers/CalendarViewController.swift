@@ -47,6 +47,45 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         super.viewDidLoad()
         self.title = "Calendar"
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
+        let dateString = calendar.today?.description
+        var dateComponents = dateString?.components(separatedBy: " ")
+        let data = [
+            "date": dateComponents![0]
+        ]
+        DataService.instance.getInfoForDate(data: data) { (data) in
+            let dictionaryData: [String: Any]! = data.dictionaryObject
+            let activities = dictionaryData["activities"] as! [String: Any]
+            let morningActivities = activities["morning"] as! [[String: Any]]
+            let afternoonActivities = activities["afternoon"] as! [[String: Any]]
+            let eveningActivities = activities["evening"] as! [[String: Any]]
+            
+            for activity in morningActivities {
+                let newActivity = Activity()
+                newActivity.name = activity["name"] as? String
+                newActivity.date = activity["date"] as? String
+                newActivity.timeOfDay = activity["time_of_day"] as? String
+                newActivity.mood = Mood(rawValue: activity["mood"] as! String)
+                self.dataSource.append(newActivity)
+            }
+            
+            for activity in afternoonActivities {
+                let newActivity = Activity()
+                newActivity.name = activity["name"] as? String
+                newActivity.date = activity["date"] as? String
+                newActivity.timeOfDay = activity["time_of_day"] as? String
+                newActivity.mood = Mood(rawValue: activity["mood"] as! String)
+                self.dataSource.append(newActivity)
+            }
+            
+            for activity in eveningActivities {
+                let newActivity = Activity()
+                newActivity.name = activity["name"] as? String
+                newActivity.date = activity["date"] as? String
+                newActivity.timeOfDay = activity["time_of_day"] as? String
+                newActivity.mood = Mood(rawValue: activity["mood"] as! String)
+                self.dataSource.append(newActivity)
+            }
+        }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

@@ -37,14 +37,14 @@ class MoodButton: UIButton {
                 DataService.instance.addMoodToDate(mood: mood, date: nil)
             }
         }
-        var activitiesViewController = ActivitiesViewController.create()
+        let activitiesViewController = ActivitiesViewController.create()
         if (date != nil) {
             activitiesViewController.date = date
         } else {
             let dateFormatter : DateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let dateTime = Date()
-            var dateString = dateFormatter.string(from: dateTime)
+            let dateString = dateFormatter.string(from: dateTime)
             activitiesViewController.date = dateString
         }
         if (navigationController != nil) {

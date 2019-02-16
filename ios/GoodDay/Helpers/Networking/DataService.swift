@@ -51,7 +51,7 @@ class DataService {
         var returnData: JSON? = nil
         Alamofire.request(BASE_URL + "getDateInfo", method: .post, parameters: data,  encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
             switch response.result {
-            case .success(let data):
+            case .success(let _):
                 let jsonData = JSON(response.result.value!)
                 returnData = jsonData
                 complete(returnData!)
