@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     private weak var calendar: FSCalendar!
     private var tableView: UITableView!
+
     var dataSource: [Activity] = [] {
         didSet {
             self.tableView.reloadData()
@@ -21,6 +22,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     override func loadView() {
+        super.loadView()
         
         let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor.groupTableViewBackground
@@ -43,8 +45,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "FSCalendar"
-        self.tableView.backgroundColor = UIColor.black
+        self.title = "Calendar"
+        tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -114,6 +116,15 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ActivityViewCell else {
+            return UITableViewCell()
+        }
+        let cellData = dataSource[indexPath.row]
+        cell.activity = cellData
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

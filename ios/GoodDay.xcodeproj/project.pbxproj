@@ -23,6 +23,7 @@
 		30CE4E8A2217F18300800615 /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E892217F18300800615 /* AddActivityViewController.swift */; };
 		30CE4E8C221808BD00800615 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E8B221808BD00800615 /* CalendarViewController.swift */; };
 		30CE4E8F221820CB00800615 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E8E221820CB00800615 /* Activity.swift */; };
+		30CE4E91221829CA00800615 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E90221829CA00800615 /* ActivityViewCell.swift */; };
 		540A0AF3507DC828D1744D8E /* Pods_GoodDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923040AC7CF8C512DCF6797D /* Pods_GoodDayTests.framework */; };
 		999FF910134C67B5C54B9F97 /* Pods_GoodDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F34597F577094AFCC8D98ECB /* Pods_GoodDay.framework */; };
 		A13AE96FC08555002ECB4941 /* Pods_GoodDayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */; };
@@ -69,6 +70,7 @@
 		30CE4E892217F18300800615 /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
 		30CE4E8B221808BD00800615 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		30CE4E8E221820CB00800615 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		30CE4E90221829CA00800615 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodDayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		542FE3FBC1693A4227A34487 /* Pods-GoodDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDay.release.xcconfig"; path = "Target Support Files/Pods-GoodDay/Pods-GoodDay.release.xcconfig"; sourceTree = "<group>"; };
 		7D2D29D9E47541C431B19670 /* Pods-GoodDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodDayTests/Pods-GoodDayTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				3068D4362217BDC30087D693 /* MoodButton.swift */,
+				30CE4E90221829CA00800615 /* ActivityViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				3068D4342217A1FF0087D693 /* MainTabBarController.swift in Sources */,
 				30CE4E882217E7AC00800615 /* ActivitiesViewController.swift in Sources */,
 				3068D43B2217C0910087D693 /* DataService.swift in Sources */,
+				30CE4E91221829CA00800615 /* ActivityViewCell.swift in Sources */,
 				30CE4E8F221820CB00800615 /* Activity.swift in Sources */,
 				3068D43D2217C3940087D693 /* Constants.swift in Sources */,
 			);
