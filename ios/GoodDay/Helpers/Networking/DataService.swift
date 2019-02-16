@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class DataService {
     static let instance = DataService()
@@ -40,6 +41,20 @@ class DataService {
             switch response.result {
             case .success(let data):
                 print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getInfoForDate(data: [String: Any], complete:@escaping (_ data: JSON) -> Void) {
+        var returnData: JSON? = nil
+        Alamofire.request(BASE_URL + "getDateInfo", method: .post, parameters: data,  encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
+            switch response.result {
+            case .success(let data):
+                let jsonData = JSON(response.result.value!)
+                returnData = jsonData
+                complete(returnData!)
             case .failure(let error):
                 print(error)
             }

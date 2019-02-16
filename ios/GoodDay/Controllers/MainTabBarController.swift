@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
     var statsViewController: UIViewController!
     var moodViewController: MoodViewController!
     var settingsViewController: UIViewController!
-    var calendarViewController: UIViewController!
+    var calendarViewController: CalendarViewController!
     
     var navigationControllers: [UINavigationController] = []
     
@@ -24,7 +24,7 @@ class MainTabBarController: UITabBarController {
         setupNavigationControllers()
         
         self.viewControllers = navigationControllers
-        self.tabBar.tintColor = UIColor.blue
+        self.tabBar.tintColor = UIColor(red:0.00, green:0.56, blue:1.00, alpha:1.0)
     }
     
     func createViewControllers() {
@@ -34,22 +34,22 @@ class MainTabBarController: UITabBarController {
         
         statsViewController = UIViewController()
         statsViewController.view.backgroundColor = UIColor.white
+        statsViewController.tabBarItem.image = UIImage(named: "stats-icon")
         statsViewController.navigationItem.title = "STATS"
         
         moodViewController = MoodViewController.create()
         moodViewController.view.backgroundColor = UIColor.white
+        moodViewController.tabBarItem.image = UIImage(named: "plus-icon")
         moodViewController.navigationItem.title = "+"
         
-        statsViewController = UIViewController()
-        statsViewController.view.backgroundColor = UIColor.white
-        statsViewController.navigationItem.title = "STATS"
-        
-        calendarViewController = UIViewController()
+        calendarViewController = CalendarViewController.create()
         calendarViewController.view.backgroundColor = UIColor.white
+        calendarViewController.tabBarItem.image = UIImage(named: "calendar-icon")
         calendarViewController.navigationItem.title = "CALENDAR"
         
         settingsViewController = UIViewController()
         settingsViewController.view.backgroundColor = UIColor.white
+        settingsViewController.tabBarItem.image = UIImage(named: "settings-icon")
         settingsViewController.navigationItem.title = "SETTINGS"
     }
     
@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController {
         
         settingsNavigationController.tabBarItem.title = "SETTINGS"
         
-        navigationControllers = [homeNavigationController, statsNavigationController, moodNavigationController, calendarNavigationController, settingsNavigationController]
+        navigationControllers = [statsNavigationController, moodNavigationController, calendarNavigationController, settingsNavigationController]
     }
     
     class func create() -> MainTabBarController {

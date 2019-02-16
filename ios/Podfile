@@ -7,6 +7,8 @@ target 'GoodDay' do
 
   # Pods for GoodDay
   pod 'Alamofire'
+  pod 'FSCalendar'
+  pod 'SwiftyJSON'
 
   target 'GoodDayTests' do
     inherit! :search_paths

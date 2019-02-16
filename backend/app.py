@@ -42,6 +42,13 @@ def getActivities():
     print(activity)
   return "works!"
 
+@app.route('/api/getDateInfo', methods=["POST"])
+def getDateInfo():
+  content = request.json
+  print(content)
+  result = dates_db.find_one({"date": content["date"]})
+  return dumps(result) if result else {}
+
 @app.route('/api/addActivityToDate')
 def addActivityToDate():
   date = datetime.date.today()
