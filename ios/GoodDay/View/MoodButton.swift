@@ -20,6 +20,8 @@ enum Mood : String {
 
 class MoodButton: UIButton {
     var mood: Mood?
+    var date: String?
+    var navigationController: UINavigationController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +31,26 @@ class MoodButton: UIButton {
     
     @objc func buttonClicked() {
         if let mood = mood {
-            DataService.instance.addMoodToDate(mood: mood)
+            if let date = date {
+                DataService.instance.addMoodToDate(mood: mood, date: date)
+            } else {
+                DataService.instance.addMoodToDate(mood: mood, date: nil)
+            }
+        }
+        var activitiesViewController = ActivitiesViewController.create()
+        if (date != nil) {
+            activitiesViewController.date = date
+        } else {
+            let dateFormatter : DateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateTime = Date()
+            var dateString = dateFormatter.string(from: dateTime)
+            activitiesViewController.date = dateString
+        }
+        if (navigationController != nil) {
+            navigationController?.present(activitiesViewController, animated: true, completion: nil)
+        } else {
+        UIApplication.shared.keyWindow?.rootViewController?.present(activitiesViewController, animated: true, completion: nil)
         }
     }
 }

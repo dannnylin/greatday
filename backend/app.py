@@ -18,21 +18,21 @@ dates_db = mongo.db.dates
 def index():
   return "hello world"
 
-@app.route('/api/test', methods=['GET'])
-def test():
-  return "test123"
-
-@app.route('/api/addActivity')
+@app.route('/api/addActivity', methods=['POST'])
 def addActivity():
-  # data = json.loads(request.data)
+  content = request.json
   data = {
-      "name": "date",
-      "mood": "happy",
-      "date": "1550276407",
-      "time_of_day": "evening"
+      "name": content["activity"],
+      "mood": content["mood"],
+      "date": content["date"],
+      "time_of_day": content["timeOfDay"]
   }
   activity = activities_db.insert_one(data)
-  print(activity)
+  result = dates_db.find_one({"date": data["date"]})
+  activities = result["activities"]
+  activities[data["time_of_day"]].append(data)
+  result = dates_db.find_one_and_update(
+      {"date": data["date"]}, {"$set": {"activities": activities}})
   return "hello world"
 
 @app.route('/api/getActivities')
@@ -44,12 +44,6 @@ def getActivities():
 
 @app.route('/api/addActivityToDate')
 def addActivityToDate():
-  time_of_day = "evening"
-  activity_data = {
-      "activity_id": "5c675dcc73d20235873e10da",
-      "name": "date",
-      "mood": "happy"
-  }
   date = datetime.date.today()
   date_str = "{0}-{1}-{2}".format(date.year, date.month, date.day)
   result = dates_db.find_one({"date": date_str})

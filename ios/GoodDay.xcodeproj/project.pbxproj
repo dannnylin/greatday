@@ -19,6 +19,8 @@
 		30BD63F82213FBDE00ADDC22 /* GoodDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD63F72213FBDE00ADDC22 /* GoodDayUITests.swift */; };
 		30BD64072213FC5D00ADDC22 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD64062213FC5D00ADDC22 /* MoodViewController.swift */; };
 		30BD64092213FCB200ADDC22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BD64082213FCB200ADDC22 /* Main.storyboard */; };
+		30CE4E882217E7AC00800615 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E872217E7AC00800615 /* ActivitiesViewController.swift */; };
+		30CE4E8A2217F18300800615 /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE4E892217F18300800615 /* AddActivityViewController.swift */; };
 		540A0AF3507DC828D1744D8E /* Pods_GoodDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923040AC7CF8C512DCF6797D /* Pods_GoodDayTests.framework */; };
 		999FF910134C67B5C54B9F97 /* Pods_GoodDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F34597F577094AFCC8D98ECB /* Pods_GoodDay.framework */; };
 		A13AE96FC08555002ECB4941 /* Pods_GoodDayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */; };
@@ -61,6 +63,8 @@
 		30BD63F92213FBDE00ADDC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BD64062213FC5D00ADDC22 /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
 		30BD64082213FCB200ADDC22 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		30CE4E872217E7AC00800615 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		30CE4E892217F18300800615 /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
 		5020499B9E4C0FB17D1F5CCA /* Pods_GoodDayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodDayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		542FE3FBC1693A4227A34487 /* Pods-GoodDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDay.release.xcconfig"; path = "Target Support Files/Pods-GoodDay/Pods-GoodDay.release.xcconfig"; sourceTree = "<group>"; };
 		7D2D29D9E47541C431B19670 /* Pods-GoodDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodDayTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodDayTests/Pods-GoodDayTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				30BD64062213FC5D00ADDC22 /* MoodViewController.swift */,
 				3068D4332217A1FF0087D693 /* MainTabBarController.swift */,
 				3068D43E2217DB3D0087D693 /* PreviousMoodViewController.swift */,
+				30CE4E872217E7AC00800615 /* ActivitiesViewController.swift */,
+				30CE4E892217F18300800615 /* AddActivityViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -441,8 +447,10 @@
 				30BD63D82213FBDD00ADDC22 /* AppDelegate.swift in Sources */,
 				30BD64072213FC5D00ADDC22 /* MoodViewController.swift in Sources */,
 				3068D4372217BDC30087D693 /* MoodButton.swift in Sources */,
+				30CE4E8A2217F18300800615 /* AddActivityViewController.swift in Sources */,
 				3068D43F2217DB3D0087D693 /* PreviousMoodViewController.swift in Sources */,
 				3068D4342217A1FF0087D693 /* MainTabBarController.swift in Sources */,
+				30CE4E882217E7AC00800615 /* ActivitiesViewController.swift in Sources */,
 				3068D43B2217C0910087D693 /* DataService.swift in Sources */,
 				3068D43D2217C3940087D693 /* Constants.swift in Sources */,
 			);

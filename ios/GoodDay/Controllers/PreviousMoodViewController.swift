@@ -24,6 +24,12 @@ class PreviousMoodViewController: MoodViewController {
         datePickerTextView.text = dateString
     }
     
+    func modifyButtonsDates() {
+        sadButton.date = datePickerTextView.text
+        mehButton.date = datePickerTextView.text
+        happyButton.date = datePickerTextView.text
+    }
+    
     func showDatePicker(){
         //Formate Date
         datePicker.datePickerMode = .date
@@ -48,6 +54,7 @@ class PreviousMoodViewController: MoodViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         datePickerTextView.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
+        modifyButtonsDates()
     }
     
     @objc func cancelDatePicker(){
