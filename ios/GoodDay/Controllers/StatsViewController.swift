@@ -14,6 +14,7 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private weak var footerView: UIView!
     private var pieChart: PieChartView!
+    private var lineChart: LineChartView!
     var dataSource: [[(name: String, count: Int)]] = [[(String, Int)]]() {
         didSet {
             self.tableView.reloadData()
@@ -26,15 +27,28 @@ class StatsViewController: UIViewController {
         tableView.register(HappiestActivitiesCell.self, forCellReuseIdentifier: "happiestCell")
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
         
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 475))
+//        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 475))
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 950))
         customView.backgroundColor = UIColor.white
+        
+        let separatorView = UIView(frame: CGRect(x: 0, y: 475, width: 400, height: 20))
+        separatorView.backgroundColor = NSUIColor(hex: 0xefeff4)
+        separatorView.layer.borderWidth = 1
+        separatorView.layer.borderColor = (NSUIColor(hex: 0xe8e8e8)).cgColor
+        
         pieChart = PieChartView(frame: CGRect(x: -15, y: 40, width: 400, height: 400))
         let titleLabel = UILabel(frame: CGRect(x: 133, y: 10, width: 200, height: 25))
         titleLabel.textColor = UIColor.black
         titleLabel.text = "Mood Counts"
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        customView.addSubview(pieChart)
+        
         customView.addSubview(titleLabel)
+        customView.addSubview(pieChart)
+        customView.addSubview(separatorView)
+        
+        lineChart = LineChartView(frame: CGRect(x: -15, y: 495, width: 400, height: 400))
+        customView.addSubview(lineChart)
+        
         tableView.tableFooterView = customView
         
         DataService.instance.getRecommendedActivities { (data) in
@@ -82,6 +96,32 @@ class StatsViewController: UIViewController {
                 self.setupPieChart(data: moodData)
             }
         }
+        
+        DataService.instance.getLastFiveDaysStats { (data) in
+            if let historicalData = data.arrayObject {
+                var data: [ChartDataEntry] = [ChartDataEntry]()
+                var count = 0
+                for day in historicalData {
+                    if let dayInfo = day as? Array<Any> {
+                        if let moodScore = dayInfo[1] as? Int {
+                            data.append(ChartDataEntry(x: Double(count), y: Double(moodScore)))
+                        }
+                    } else {
+                        data.append(ChartDataEntry(x: Double(count), y: 0))
+                    }
+                    count += 1
+                }
+                self.setupLineChart(entries: data)
+            }
+        }
+    }
+    
+    func setupLineChart(entries: [ChartDataEntry]) {
+        let line1 = LineChartDataSet(values: entries, label: "Mood")
+        line1.colors = [NSUIColor.blue]
+        let data = LineChartData()
+        data.addDataSet(line1)
+        lineChart.data = data
     }
     
     func setupPieChart(data: [String: Int]) {

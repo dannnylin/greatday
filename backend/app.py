@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 import json
 from collections import OrderedDict
+from pprint import pprint
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://admin:password123@ds147942.mlab.com:47942/greatday"
@@ -96,6 +97,39 @@ def getDateInfo():
   content = request.json
   result = dates_db.find_one({"date": content["date"]})
   return dumps(result) if result else {}
+
+@app.route('/api/getLastFiveDaysInfo')
+def getLastFiveDaysInfo():
+  returnData = []
+  scoreMap = {"happy": 5, "sad": -5, "meh": 0}
+
+  now = datetime.now()
+  currentYear = str(now.year)
+  currentMonth = int(now.month)
+  currentDay = str(now.day)
+  if currentMonth < 10:
+    currentMonth = "0" + str(currentMonth)
+  currentDateStr = currentYear + "-" + currentMonth + "-" + currentDay
+
+  for i in range(0, 10):
+    score = 0
+    currentDay = int(currentDay)
+    previousDayStr = str(currentDay-i)
+    if int(previousDayStr) < 10:
+      previousDayStr = "0" + str(previousDayStr)
+    previousDayWholeStr = currentYear + "-" + currentMonth + "-" + previousDayStr
+    result = dates_db.find_one({"date": previousDayWholeStr})
+    if result:
+      for activity in result["activities"]:
+        for each in result["activities"][activity]:
+          score += scoreMap[each["mood"]]
+      returnData.append((previousDayWholeStr, score))
+    else:
+      returnData.append((previousDayWholeStr, 0))
+
+  returnData.reverse()
+  return json.dumps(returnData)
+  
 
 @app.route('/api/addActivityToDate')
 def addActivityToDate():

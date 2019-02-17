@@ -75,6 +75,20 @@ class DataService {
         }
     }
     
+    func getLastFiveDaysStats(complete:@escaping (_ data: JSON) -> Void) {
+        var returnData: JSON? = nil
+        Alamofire.request(BASE_URL + "getLastFiveDaysInfo", method: .get,  encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
+            switch response.result {
+            case .success(let _):
+                let jsonData = JSON(response.result.value!)
+                returnData = jsonData
+                complete(returnData!)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func getMoodCounts(complete:@escaping (_ data: JSON) -> Void) {
         var returnData: JSON? = nil
         Alamofire.request(BASE_URL + "getMoodCounts", method: .get,  encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
