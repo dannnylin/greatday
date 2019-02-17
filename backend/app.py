@@ -8,6 +8,11 @@ import os
 import json
 from collections import OrderedDict
 from pprint import pprint
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://admin:password123@ds147942.mlab.com:47942/greatday"
@@ -156,6 +161,52 @@ def addMoodToDate():
     dates_db.insert_one({"date": date, "mood": mood, "activities": {"morning": [], "afternoon": [], "evening": []}})
   
   return "hello"
+
+@app.route('/api/backupData', methods=['POST'])
+def backupData():
+  content = request.json
+
+  fromaddr = "thegreatday97@gmail.com"
+  toaddr = content["email"]
+
+  msg = MIMEMultipart()
+
+  msg['From'] = fromaddr
+  msg['To'] = toaddr
+  msg['Subject'] = "GreatDay Data"
+
+  body = "Hello world"
+
+  msg.attach(MIMEText(body, 'plain'))
+  result = activities_db.find({})
+  result = dumps(result) if result else {}
+  with open('data.json', 'w') as outfile:
+    json.dump(result, outfile)
+
+  result = dates_db.find({})
+  result = dumps(result) if result else {}
+  with open('data.json', 'a') as outfile:
+    json.dump(result, outfile)
+
+  filename = "data.json"
+  attachment = open(filename, "rb")
+
+  part = MIMEBase('application', 'octet-stream')
+  part.set_payload((attachment).read())
+  encoders.encode_base64(part)
+  part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+
+  msg.attach(part)
+
+  server = smtplib.SMTP('smtp.gmail.com', 587)
+  server.starttls()
+  server.login(fromaddr, "HelloWorld123!")
+  text = msg.as_string()
+  server.sendmail(fromaddr, toaddr, text)
+  server.quit()
+  
+  return "ok"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)

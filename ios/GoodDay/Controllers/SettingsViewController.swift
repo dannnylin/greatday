@@ -67,4 +67,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return "Support"
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let settingType = dataSource[indexPath.section][indexPath.row]
+        switch settingType {
+        case .Backup:
+            DataService.instance.backupData(email: "danny.lin@nyu.edu")
+        default:
+            break
+        }
+    }
 }

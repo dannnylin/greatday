@@ -116,4 +116,19 @@ class DataService {
             }
         }
     }
+    
+    func backupData(email: String) {
+        let data: [String: Any] = [
+            "email": email
+        ]
+        
+        Alamofire.request(BASE_URL + "backupData", method: .post, parameters: data,  encoding: JSONEncoding.default, headers: [:]).responseString { (response) in
+            switch response.result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
