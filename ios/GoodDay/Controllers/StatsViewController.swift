@@ -12,6 +12,7 @@ import Charts
 
 class StatsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     private weak var footerView: UIView!
     private var pieChart: PieChartView!
     private var lineChart: LineChartView!
@@ -21,13 +22,26 @@ class StatsViewController: UIViewController {
         }
     }
     
+    @objc func refreshData() {
+        dataSource.removeAll()
+        loadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         tableView.register(HappiestActivitiesCell.self, forCellReuseIdentifier: "happiestCell")
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
         
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 970))
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 950))
         customView.backgroundColor = UIColor.white
         
         let separatorView = UIView(frame: CGRect(x: 0, y: 475, width: 400, height: 20))
@@ -127,6 +141,8 @@ class StatsViewController: UIViewController {
                 self.setupLineChart(entries: data, dates: dates)
             }
         }
+        
+        self.refreshControl.endRefreshing()
     }
     
     func setupLineChart(entries: [ChartDataEntry], dates: [String]) {
