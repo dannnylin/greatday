@@ -3,7 +3,7 @@ from flask import render_template, redirect
 from flask_pymongo import PyMongo
 from datetime import datetime
 from bson.json_util import dumps, loads
-import datetime
+from datetime import datetime
 import os
 import json
 from collections import OrderedDict
@@ -36,6 +36,11 @@ def addActivity():
       {"date": data["date"]}, {"$set": {"activities": activities}})
   return "hello world"
 
+@app.route('/api/getActivities')
+def getActivities():
+  result = activities_db.find({})
+  return dumps(result) if result else {}
+
 @app.route('/api/getStats')
 def getStats():
   returnResults = {}
@@ -56,6 +61,24 @@ def getStats():
       sorted(rankings.items(), key=lambda x: x[1], reverse=True))
   returnResults["sad"] = rankedData
   return json.dumps(returnResults)
+
+@app.route('/api/getRecommended')
+def getRecommended():
+  hourNow = int(datetime.now().hour)
+  timeOfDay = ""
+  if hourNow < 12:
+    timeOfDay = "morning"
+  elif hourNow > 12 and hourNow < 18:
+    timeOfDay = "afternoon"
+  else:
+    timeOfDay = "evening"
+  results = activities_db.distinct("name", {"time_of_day": "evening", "mood": "happy"})
+  return dumps(results) if results else {}
+
+@app.route('/api/getHappyStats')
+def getHappyStats():
+  activities = activities_db.find({"mood": "happy"})
+  return dumps(activities) if activities else {}
 
 @app.route('/api/getDateInfo', methods=["POST"])
 def getDateInfo():
