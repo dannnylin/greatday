@@ -17,7 +17,7 @@ dates_db = mongo.db.dates
 
 @app.route('/')
 def index():
-  return "hello world"
+  return render_template('index.html')
 
 @app.route('/api/addActivity', methods=['POST'])
 def addActivity():
