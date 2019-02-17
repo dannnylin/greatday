@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-yy-bCD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zUJ-KS-kb7" id="LKo-8N-CA0"/>
@@ -210,7 +210,7 @@
                                     <constraint firstAttribute="height" constant="44" id="alw-YG-WWb"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="VqG-oS-QN6">
+                                    <navigationItem title="Add Activities" id="VqG-oS-QN6">
                                         <barButtonItem key="leftBarButtonItem" title="Close" id="Jhm-rB-Uyx">
                                             <connections>
                                                 <action selector="cancelPressedWithSender:" destination="zUJ-KS-kb7" id="q9u-R3-pnl"/>
@@ -224,16 +224,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What did you do today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URn-4F-K8I">
+                                <rect key="frame" x="0.0" y="69" width="375" height="23"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="URn-4F-K8I" firstAttribute="leading" secondItem="LKc-h9-ElX" secondAttribute="leading" id="2dC-v7-MFr"/>
                             <constraint firstItem="8ct-yy-bCD" firstAttribute="trailing" secondItem="LKc-h9-ElX" secondAttribute="trailing" id="MnY-ee-jfw"/>
                             <constraint firstItem="8ct-yy-bCD" firstAttribute="leading" secondItem="LKc-h9-ElX" secondAttribute="leading" id="PcN-3a-QXb"/>
+                            <constraint firstItem="LKc-h9-ElX" firstAttribute="trailing" secondItem="URn-4F-K8I" secondAttribute="trailing" id="ST8-pI-KjY"/>
                             <constraint firstItem="7Z9-lw-ybv" firstAttribute="leading" secondItem="LKc-h9-ElX" secondAttribute="leading" id="XFl-Yk-DGE"/>
-                            <constraint firstItem="8ct-yy-bCD" firstAttribute="top" secondItem="7Z9-lw-ybv" secondAttribute="bottom" id="Xzf-ga-lxH"/>
                             <constraint firstItem="8ct-yy-bCD" firstAttribute="bottom" secondItem="LKc-h9-ElX" secondAttribute="bottom" id="jlf-9W-D1m"/>
                             <constraint firstItem="7Z9-lw-ybv" firstAttribute="trailing" secondItem="LKc-h9-ElX" secondAttribute="trailing" id="lQx-Si-sfj"/>
-                            <constraint firstItem="8ct-yy-bCD" firstAttribute="top" secondItem="7Z9-lw-ybv" secondAttribute="bottom" id="nJ0-ky-l0C"/>
+                            <constraint firstItem="URn-4F-K8I" firstAttribute="top" secondItem="7Z9-lw-ybv" secondAttribute="bottom" constant="5" id="lxs-WN-9VW"/>
+                            <constraint firstItem="8ct-yy-bCD" firstAttribute="top" secondItem="7Z9-lw-ybv" secondAttribute="bottom" constant="35" id="nJ0-ky-l0C"/>
                             <constraint firstItem="7Z9-lw-ybv" firstAttribute="top" secondItem="LKc-h9-ElX" secondAttribute="top" id="ovZ-lA-bJT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LKc-h9-ElX"/>
@@ -418,7 +427,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDb-lg-x09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3969" y="-42"/>
+            <point key="canvasLocation" x="3968.8000000000002" y="-42.728635682158924"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="l5y-PV-zj5">
+            <objects>
+                <viewController storyboardIdentifier="settingsViewController" id="1YY-bR-SNu" customClass="SettingsViewController" customModule="GoodDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GrW-5d-Oft">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rX-T8-plm" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="nUY-km-uyk"/>
+                                    <constraint firstAttribute="width" constant="300" id="t3I-mY-OWN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5rX-T8-plm" firstAttribute="centerY" secondItem="GrW-5d-Oft" secondAttribute="centerY" id="SJP-AR-mJG"/>
+                            <constraint firstItem="5rX-T8-plm" firstAttribute="centerX" secondItem="GrW-5d-Oft" secondAttribute="centerX" id="aXK-OK-xlD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EaV-U9-rHN"/>
+                    </view>
+                    <connections>
+                        <outlet property="pieChart" destination="5rX-T8-plm" id="UlY-M7-cSr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkU-Kh-gmK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4713" y="-45"/>
         </scene>
         <!--Previous Mood View Controller-->
         <scene sceneID="HLK-w5-x7U">

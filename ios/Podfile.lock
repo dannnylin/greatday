@@ -1,24 +1,40 @@
 PODS:
   - Alamofire (4.6.0)
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
   - FSCalendar (2.7.9)
+  - Realm (2.8.1):
+    - Realm/Headers (= 2.8.1)
+  - Realm/Headers (2.8.1)
+  - RealmSwift (2.8.1):
+    - Realm (= 2.8.1)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Charts
   - FSCalendar
+  - RealmSwift (= 2.8.1)
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Charts
     - FSCalendar
+    - Realm
+    - RealmSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
+  Realm: 2627602ad6818451f0cb8c2a6e072f7f10a5f360
+  RealmSwift: 4764ca7657f2193c256fb032c0b123926f70dbcd
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 2ed39125d4e52b3fef113f78d193b06f1b5e91cf
+PODFILE CHECKSUM: 0bcd91a81f714a08d60379aafd794143e965aa2e
 
 COCOAPODS: 1.6.0

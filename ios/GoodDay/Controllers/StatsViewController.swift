@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import Charts
 
 class StatsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private weak var footerView: UIView!
+    private var pieChart: PieChartView!
     var dataSource: [[(name: String, count: Int)]] = [[(String, Int)]]() {
         didSet {
             self.tableView.reloadData()
@@ -22,6 +25,17 @@ class StatsViewController: UIViewController {
         
         tableView.register(HappiestActivitiesCell.self, forCellReuseIdentifier: "happiestCell")
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "cell")
+        
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 475))
+        customView.backgroundColor = UIColor.white
+        pieChart = PieChartView(frame: CGRect(x: -15, y: 40, width: 400, height: 400))
+        let titleLabel = UILabel(frame: CGRect(x: 133, y: 10, width: 200, height: 25))
+        titleLabel.textColor = UIColor.black
+        titleLabel.text = "Mood Counts"
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        customView.addSubview(pieChart)
+        customView.addSubview(titleLabel)
+        tableView.tableFooterView = customView
         
         DataService.instance.getRecommendedActivities { (data) in
             var modifiedDataSource: [(String, Int)] = [(String, Int)]()
@@ -62,6 +76,48 @@ class StatsViewController: UIViewController {
                 }
             }
         }
+        
+        DataService.instance.getMoodCounts { (data) in
+            if let moodData = data.dictionaryObject as? [String: Int] {
+                self.setupPieChart(data: moodData)
+            }
+        }
+    }
+    
+    func setupPieChart(data: [String: Int]) {
+        pieChart.chartDescription?.enabled = false
+        pieChart.drawHoleEnabled = false
+        pieChart.rotationAngle = 0
+        //pieView.rotationEnabled = false
+        pieChart.isUserInteractionEnabled = false
+        pieChart.legend.horizontalAlignment = Legend.HorizontalAlignment.center
+        
+        var entries: [PieChartDataEntry] = Array()
+        for (mood, count) in data {
+            if (mood == "happy") {
+                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+            }
+        }
+        for (mood, count) in data {
+            if (mood == "meh") {
+                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+            }
+        }
+        for (mood, count) in data {
+            if (mood == "sad") {
+                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+            }
+        }
+        let dataSet = PieChartDataSet(values: entries, label: "")
+        
+        let c1 = NSUIColor(hex: 0xfede00) //happy
+        let c2 = NSUIColor(hex: 0xb4b4b3) //meh
+        let c3 = NSUIColor(hex: 0x008ffe) //sad
+        
+        dataSet.colors = [c1, c2, c3]
+        dataSet.drawValuesEnabled = false
+        
+        pieChart.data = PieChartData(dataSet: dataSet)
     }
     
     class func create() -> StatsViewController {

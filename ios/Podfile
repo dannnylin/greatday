@@ -9,6 +9,8 @@ target 'GoodDay' do
   pod 'Alamofire'
   pod 'FSCalendar'
   pod 'SwiftyJSON'
+  pod 'Charts'
+  pod 'RealmSwift', '2.8.1'
 
   target 'GoodDayTests' do
     inherit! :search_paths

@@ -41,6 +41,17 @@ def getActivities():
   result = activities_db.find({})
   return dumps(result) if result else {}
 
+@app.route('/api/getMoodCounts')
+def getMoodCounts():
+  counter = {}
+  result = activities_db.find({"mood": "happy"})
+  counter["happy"] = result.count()
+  result = activities_db.find({"mood": "meh"})
+  counter["meh"] = result.count()
+  result = activities_db.find({"mood": "sad"})
+  counter["sad"] = result.count()
+  return json.dumps(counter)
+
 @app.route('/api/getStats')
 def getStats():
   returnResults = {}
@@ -83,7 +94,6 @@ def getHappyStats():
 @app.route('/api/getDateInfo', methods=["POST"])
 def getDateInfo():
   content = request.json
-  print(content)
   result = dates_db.find_one({"date": content["date"]})
   return dumps(result) if result else {}
 
