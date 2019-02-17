@@ -10,17 +10,27 @@ import Foundation
 import UIKit
 import Charts
 
+enum SettingsOptions: String {
+    case Share = "Share the App"
+    case Rate = "Rate Us"
+    case Backup = "Back Up Data"
+    case Visualize = "Visualize Data"
+    case HelpFAQ = "Help & FAQ"
+    case Contact = "Contact Us"
+    
+    var description: String {
+        return self.rawValue
+    }
+}
+
 class SettingsViewController: UIViewController {
-    @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var tableView: UITableView!
+    var dataSource: [[SettingsOptions]] = [[.Backup, .Visualize], [.Share, .Rate], [.HelpFAQ, .Contact]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DataService.instance.getMoodCounts { (data) in
-            if let moodData = data.dictionaryObject as? [String: Int] {
-                self.setupPieChart(data: moodData)
-            }
-        }
+        tableView.register(HappiestActivitiesCell.self, forCellReuseIdentifier: "happiestCell")
     }
     
     class func create() -> SettingsViewController {
@@ -28,42 +38,33 @@ class SettingsViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "settingsViewController") as! SettingsViewController
         return controller
     }
-    
-    func setupPieChart(data: [String: Int]) {
-        pieChart.chartDescription?.enabled = false
-        pieChart.drawHoleEnabled = false
-        pieChart.rotationAngle = 0
-        //pieView.rotationEnabled = false
-        pieChart.isUserInteractionEnabled = false
-        pieChart.legend.horizontalAlignment = Legend.HorizontalAlignment.center
-        
-        var entries: [PieChartDataEntry] = Array()
-        for (mood, count) in data {
-            if (mood == "happy") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
-            }
-        }
-        for (mood, count) in data {
-            if (mood == "meh") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
-            }
-        }
-        for (mood, count) in data {
-            if (mood == "sad") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
-            }
-        }
-        let dataSet = PieChartDataSet(values: entries, label: "")
-        
-        let c1 = NSUIColor(hex: 0xfede00) //happy
-        let c2 = NSUIColor(hex: 0xb4b4b3) //meh
-        let c3 = NSUIColor(hex: 0x008ffe) //sad
-        
-        dataSet.colors = [c1, c2, c3]
-        dataSet.drawValuesEnabled = false
-        
-        pieChart.data = PieChartData(dataSet: dataSet)
+}
+
+extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource[section].count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "happiestCell") as? HappiestActivitiesCell else {
+            return UITableViewCell()
+        }
+        let cellData = dataSource[indexPath.section][indexPath.row]
+        cell.activityNameLabel.text = cellData.description
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (section == 0) {
+            return "Data Management"
+        } else if (section == 1) {
+            return "Sharing"
+        } else {
+            return "Support"
+        }
+    }
 }
