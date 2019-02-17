@@ -160,24 +160,25 @@ class StatsViewController: UIViewController {
         pieChart.chartDescription?.enabled = false
         pieChart.drawHoleEnabled = false
         pieChart.rotationAngle = 0
-        //pieView.rotationEnabled = false
-        pieChart.isUserInteractionEnabled = false
+        pieChart.rotationEnabled = false
+        pieChart.usePercentValuesEnabled = true
+        pieChart.isUserInteractionEnabled = true
         pieChart.legend.horizontalAlignment = Legend.HorizontalAlignment.center
         
         var entries: [PieChartDataEntry] = Array()
         for (mood, count) in data {
             if (mood == "happy") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+                entries.append(PieChartDataEntry(value: Double(count), label: "\(mood) - \(count)"))
             }
         }
         for (mood, count) in data {
             if (mood == "meh") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+                entries.append(PieChartDataEntry(value: Double(count), label: "\(mood) - \(count)"))
             }
         }
         for (mood, count) in data {
             if (mood == "sad") {
-                entries.append(PieChartDataEntry(value: Double(count), label: mood))
+                entries.append(PieChartDataEntry(value: Double(count), label: "\(mood) - \(count)"))
             }
         }
         let dataSet = PieChartDataSet(values: entries, label: "")
